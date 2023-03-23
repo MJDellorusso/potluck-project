@@ -59,17 +59,32 @@ const assignItems = function () {
     "mushroom casserole",
     "chicken parm",
   ];
+  const potluckDrinks = [
+    "margaritas",
+    "soda",
+    "fruit punch",
+    "pineapple juice",
+    "rum",
+    "water",
+    "water",
+    "soda",
+  ];
   const allGuests = document.querySelectorAll(".guest-list li");
 
   for (let guest of allGuests) {
+    const randomPotluckIndexDrinks = Math.floor(
+      Math.random() * potluckDrinks.length
+    );
+    const randomPotluckDrink = potluckDrinks[randomPotluckIndexDrinks];
     const randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
     const randomPotluckItem = potluckItems[randomPotluckIndex];
     const listItem = document.createElement("li");
 
-    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}!`;
+    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem} and ${randomPotluckDrink}!`;
     assignedItems.append(listItem);
 
     potluckItems.splice(randomPotluckIndex, 1);
+    potluckDrinks.splice(randomPotluckIndexDrinks, 1);
   }
 };
 
